@@ -1,0 +1,10 @@
+{
+  "name": "MtgVitals",
+  "version": "0.1.0",
+  "description": "A life counter for Magic The Gathering",
+  "private": true,
+  "dependencies": {
+    "react": "git@github.com:reactjs/react-bower.git#v0.13.1",
+    "supersonic": "1.x"
+  }
+}

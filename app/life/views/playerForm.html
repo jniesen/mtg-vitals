@@ -1,0 +1,65 @@
+<script type="text/jsx">
+  var PlayerCounter = React.createClass({
+    getInitialState: function() {
+      return {
+        playerCount: parseInt(this.props.defaultPlayersCount)
+      }
+    },
+    handleIncrement: function(event) {
+      var currentState = this.state,
+          currentCount = currentState.playerCount,
+          modifiedState = currentState; 
+
+      modifiedState['playerCount'] = currentCount + 1;
+
+      this.setState(modifiedState);
+    },
+    handleDecrement: function(event) {
+      var currentState = this.state,
+          currentCount = currentState.playerCount,
+          modifiedState = currentState; 
+
+      modifiedState['playerCount'] = currentCount - 1;
+
+      this.setState(modifiedState);
+    },
+    render: function() {
+      return (
+        <div className="row">
+          <div className="col col-75 col-center">
+            <label className="item item-input item-stacked-label">
+              <span className="input-label">How many players?</span>
+              <input type="number" name="playerCount" value={this.state.playerCount} />
+            </label>
+          </div>
+
+          <div className="col">
+            <div className="row">
+              <button className="button icon super-chevron-up" onClick={this.handleIncrement} type="button"></button>
+            </div>
+            <div className="row">
+              <button className="button icon super-chevron-down" onClick={this.handleDecrement} type="button"></button>
+            </div>
+          </div>
+        </div>
+      );
+    }
+  });
+
+  var PlayerApp = React.createClass({
+    render: function() {
+      return (
+        <form className="list">
+          <PlayerCounter defaultPlayersCount="2" />
+
+          <button className="button button-block button-balanced">Play!</button>
+        </form>
+      );
+    }
+  });
+
+  React.render(<PlayerApp />, document.getElementById('playerApp'));
+</script>
+
+<div id="playerApp" class="padding"></div>
+
